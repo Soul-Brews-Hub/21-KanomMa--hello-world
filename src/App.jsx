@@ -4,11 +4,16 @@ import './App.css'
 function App() {
   const [count, setCount] = useState(0)
   const [isAnimating, setIsAnimating] = useState(false)
+  const [pulseIntensity, setPulseIntensity] = useState(1)
 
   const animateCounter = useCallback((callback) => {
     setIsAnimating(true)
+    setPulseIntensity(1.3)
     callback()
-    setTimeout(() => setIsAnimating(false), 200)
+    setTimeout(() => {
+      setIsAnimating(false)
+      setPulseIntensity(1)
+    }, 200)
   }, [])
 
   const increment = useCallback(() => {
@@ -54,6 +59,21 @@ function App() {
 
   return (
     <div className="app">
+      <div className="background-animation">
+        <div className="gradient-flow" style={{
+          animationDuration: `${8 / pulseIntensity}s`,
+          opacity: 0.7 * pulseIntensity
+        }}></div>
+        <div className="floating-shapes">
+          <div className="shape shape-1"></div>
+          <div className="shape shape-2"></div>
+          <div className="shape shape-3"></div>
+          <div className="shape shape-4"></div>
+          <div className="shape shape-5"></div>
+          <div className="shape shape-6"></div>
+        </div>
+        <div className={`particle-field ${isAnimating ? 'pulse' : ''}`}></div>
+      </div>
       <div className="counter-container">
         <h1 className="title">Counter App</h1>
         <div className="counter-display">
