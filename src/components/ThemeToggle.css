@@ -1,0 +1,217 @@
+/* Beautiful Theme Toggle Component */
+.theme-toggle {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 50px;
+  padding: 8px 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: var(--theme-transition);
+  min-width: 80px;
+  height: 40px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+.theme-toggle:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px var(--shadow-color);
+}
+
+.theme-toggle:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--accent-sunny);
+  outline-offset: 2px;
+}
+
+/* Track background */
+.theme-toggle-track {
+  position: relative;
+  width: 40px;
+  height: 24px;
+  background: linear-gradient(135deg, var(--accent-sky) 0%, var(--primary-mint) 100%);
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+/* Icons container */
+.theme-toggle-icons {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6px;
+}
+
+/* Individual icons */
+.theme-toggle-icon {
+  width: 16px;
+  height: 16px;
+  stroke: var(--text-primary);
+  opacity: 0.4;
+  transition: all var(--transition-speed) ease;
+  transform: scale(0.8);
+}
+
+.theme-toggle-icon.active {
+  opacity: 1;
+  transform: scale(1);
+  stroke: currentColor;
+}
+
+.theme-toggle-icon.sun {
+  color: var(--accent-sunny);
+}
+
+.theme-toggle-icon.moon {
+  color: var(--accent-coral);
+}
+
+/* Sliding indicator */
+.theme-toggle-indicator {
+  position: absolute;
+  top: 2px;
+  width: 20px;
+  height: 20px;
+  background: var(--bg-secondary);
+  border-radius: 50%;
+  transition: transform var(--transition-speed) cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 4px var(--shadow-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+[data-theme="light"] .theme-toggle-indicator {
+  transform: translateX(16px);
+}
+
+/* Icon inside indicator */
+.theme-toggle-indicator-icon {
+  width: 12px;
+  height: 12px;
+  stroke: var(--text-primary);
+}
+
+/* Label */
+.theme-toggle-label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  transition: var(--theme-transition);
+  text-transform: capitalize;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Focus styles for accessibility */
+.theme-toggle:focus-visible .theme-toggle-indicator {
+  box-shadow: 0 0 0 2px var(--bg-secondary), 0 0 0 4px var(--accent-sunny);
+}
+
+/* Animation states */
+.theme-toggle-track {
+  position: relative;
+  overflow: hidden;
+}
+
+.theme-toggle-track::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg,
+    var(--primary-mint) 0%,
+    var(--accent-coral) 50%,
+    var(--accent-sky) 100%);
+  opacity: 0;
+  transition: opacity var(--transition-speed) ease;
+  border-radius: 12px;
+}
+
+.theme-toggle:hover .theme-toggle-track::before {
+  opacity: 0.1;
+}
+
+/* Pulse animation when toggling */
+@keyframes togglePulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.theme-toggle:active .theme-toggle-indicator {
+  animation: togglePulse 0.3s ease;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .theme-toggle {
+    padding: 6px 12px;
+    min-width: 70px;
+    height: 36px;
+  }
+
+  .theme-toggle-track {
+    width: 36px;
+    height: 20px;
+  }
+
+  .theme-toggle-indicator {
+    width: 16px;
+    height: 16px;
+    top: 2px;
+  }
+
+  [data-theme="light"] .theme-toggle-indicator {
+    transform: translateX(14px);
+  }
+
+  .theme-toggle-label {
+    font-size: 0.8rem;
+  }
+
+  .theme-toggle-icon {
+    width: 14px;
+    height: 14px;
+  }
+
+  .theme-toggle-indicator-icon {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+/* High contrast support */
+@media (prefers-contrast: high) {
+  .theme-toggle {
+    border: 2px solid currentColor;
+  }
+
+  .theme-toggle-icon {
+    stroke-width: 3;
+  }
+}
+
+/* Reduce motion support */
+@media (prefers-reduced-motion: reduce) {
+  .theme-toggle,
+  .theme-toggle-icon,
+  .theme-toggle-indicator,
+  .theme-toggle-track::before {
+    transition: none !important;
+    animation: none !important;
+  }
+}

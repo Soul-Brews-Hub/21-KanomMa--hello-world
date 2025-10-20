@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react'
+import { useTheme } from './hooks/useTheme'
+import ThemeToggle from './components/ThemeToggle.jsx'
 import './App.css'
 
 function App() {
@@ -7,6 +9,7 @@ function App() {
   const [emojisEnabled, setEmojisEnabled] = useState(true)
   const [activeEmojis, setActiveEmojis] = useState([])
   const emojiContainerRef = useRef(null)
+  const { theme, toggleTheme, isDark, isLight, THEMES } = useTheme()
 
   // Emoji sets
   const emojiSets = {
@@ -112,6 +115,11 @@ function App() {
           event.preventDefault()
           toggleEmojis()
           break
+        case 't':
+        case 'T':
+          event.preventDefault()
+          toggleTheme()
+          break
         default:
           break
       }
@@ -121,7 +129,7 @@ function App() {
     return () => {
       window.removeEventListener('keydown', handleKeyPress)
     }
-  }, [increment, decrement, reset, toggleEmojis])
+  }, [increment, decrement, reset, toggleEmojis, toggleTheme])
 
   // Simplified emoji generation - much less frequent
   useEffect(() => {
@@ -225,7 +233,13 @@ function App() {
         </div>
         <div className="instructions">
           <p>Use the buttons or arrow keys to count</p>
-          <p>Press <kbd>R</kbd> to reset, <kbd>E</kbd> to toggle emojis {emojisEnabled ? '🔛' : '🔜'}</p>
+          <p>
+            Press <kbd>R</kbd> to reset, <kbd>E</kbd> to toggle emojis {emojisEnabled ? '🔛' : '🔜'},
+            <kbd>T</kbd> to toggle theme {isDark ? '🌞' : '🌙'}
+          </p>
+          <div className="theme-toggle-container">
+            <ThemeToggle />
+          </div>
         </div>
       </div>
     </div>

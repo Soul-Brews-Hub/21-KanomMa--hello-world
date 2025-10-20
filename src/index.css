@@ -1,36 +1,59 @@
-/* Stunning, beautiful color palette */
+/* Theme configuration and transition base */
 :root {
-  /* Dramatic foundation colors */
-  --bg-dark: #0F0F0F; /* Deep charcoal black - dramatic, sophisticated background */
-  --bg-bright: #1A1A1A; /* Rich dark gray - alternative background option */
-  --bg-card: #FFFFFF; /* Pure white - crisp, clean card backgrounds */
-  --border-bright: #E8E8E8; /* Light gray - subtle, clean borders */
-
-  /* Stunning vibrant colors */
-  --primary-mint: #4ECDC4; /* Bright mint green - fresh, modern, beautiful */
-  --accent-coral: #FF6B6B; /* Vibrant coral pink - energetic, happy, stunning */
-  --accent-sky: #A8E6CF; /* Sky blue - calm, professional, beautiful */
-  --accent-sunny: #FFE66D; /* Sunny yellow - optimistic, cheerful */
-
-  /* Perfect text colors */
-  --text-on-dark: #FFFFFF; /* Pure white - perfect on dark backgrounds */
-  --text-on-light: #2D2D2D; /* Deep charcoal - perfect on white backgrounds */
-  --text-accent: #FF6B6B; /* Coral pink accents - vibrant emphasis */
-  --text-subtle: #666666; /* Medium gray - subtle secondary text */
-
-  /* UI colors */
-  --bg-primary: #0F0F0F; /* Deep charcoal background */
-  --bg-secondary: #FFFFFF; /* Pure white cards */
-  --border-color: #E8E8E8; /* Light gray borders */
-
   /* Design system */
   --border-radius: 12px; /* More rounded for modern, friendly look */
   --transition-speed: 0.3s; /* Smooth transitions for polished feel */
+  --theme-transition: background-color var(--transition-speed) ease,
+                      color var(--transition-speed) ease,
+                      border-color var(--transition-speed) ease,
+                      box-shadow var(--transition-speed) ease;
   --max-width: 500px;
 
   /* Simplified emoji settings */
   --emoji-max-count: 15;
   --emoji-size-base: 1.5rem;
+
+  /* Stunning vibrant colors (consistent across themes) */
+  --primary-mint: #4ECDC4; /* Bright mint green - fresh, modern, beautiful */
+  --accent-coral: #FF6B6B; /* Vibrant coral pink - energetic, happy, stunning */
+  --accent-sky: #A8E6CF; /* Sky blue - calm, professional, beautiful */
+  --accent-sunny: #FFE66D; /* Sunny yellow - optimistic, cheerful */
+}
+
+/* Dark Theme (Default) */
+:root {
+  /* Dark theme background colors */
+  --bg-primary: #0F0F0F; /* Deep charcoal background */
+  --bg-secondary: #FFFFFF; /* Pure white cards */
+  --bg-tertiary: #1A1A1A; /* Rich dark gray - alternative background */
+
+  /* Dark theme border and UI colors */
+  --border-color: #E8E8E8; /* Light gray borders */
+  --shadow-color: rgba(0, 0, 0, 0.25);
+
+  /* Dark theme text colors */
+  --text-primary: #2D2D2D; /* Deep charcoal on light cards */
+  --text-secondary: #666666; /* Medium gray - subtle secondary text */
+  --text-accent: #FF6B6B; /* Coral pink accents - vibrant emphasis */
+  --text-emoji: rgba(255, 255, 255, 0.3); /* White emoji transparency */
+}
+
+/* Light Theme */
+[data-theme="light"] {
+  /* Light theme background colors */
+  --bg-primary: #F8F9FA; /* Light warm background */
+  --bg-secondary: #FFFFFF; /* Pure white cards */
+  --bg-tertiary: #E9ECEF; /* Soft gray - alternative background */
+
+  /* Light theme border and UI colors */
+  --border-color: #DEE2E6; /* Soft gray borders */
+  --shadow-color: rgba(0, 0, 0, 0.1);
+
+  /* Light theme text colors */
+  --text-primary: #212529; /* Deep charcoal on light background */
+  --text-secondary: #6C757D; /* Muted gray - subtle secondary text */
+  --text-accent: #FF6B6B; /* Coral pink accents - vibrant emphasis */
+  --text-emoji: rgba(0, 0, 0, 0.15); /* Dark emoji transparency */
 }
 
 * {
@@ -42,12 +65,14 @@
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   background-color: var(--bg-primary);
+  color: var(--text-primary);
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 20px;
   line-height: 1.6;
+  transition: var(--theme-transition);
 }
 
 /* Simple, clean background */
@@ -84,7 +109,7 @@ body {
 .emoji {
   position: absolute;
   font-size: var(--emoji-size-base);
-  opacity: 0.3;
+  opacity: var(--text-emoji);
   pointer-events: none;
   user-select: none;
 }
@@ -122,7 +147,7 @@ body {
   border-radius: var(--border-radius);
   padding: 60px 40px;
   text-align: center;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 20px 60px var(--shadow-color);
   border: 1px solid var(--border-color);
   position: relative;
   overflow: hidden;
@@ -201,12 +226,12 @@ body {
 .counter-button.increment:hover {
   background: #3db8a3;
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(78, 205, 196, 0.25);
+  box-shadow: 0 8px 25px var(--shadow-color);
 }
 
 .counter-button.increment:active {
   transform: translateY(0);
-  box-shadow: 0 4px 15px rgba(78, 205, 196, 0.15);
+  box-shadow: 0 4px 15px var(--shadow-color);
 }
 
 /* Reset button - vibrant coral pink */
@@ -218,12 +243,12 @@ body {
 .counter-button.reset:hover {
   background: #e55a5a;
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(255, 107, 107, 0.25);
+  box-shadow: 0 8px 25px var(--shadow-color);
 }
 
 .counter-button.reset:active {
   transform: translateY(0);
-  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.15);
+  box-shadow: 0 4px 15px var(--shadow-color);
 }
 
 /* Decrement button - beautiful sky blue */
@@ -235,12 +260,12 @@ body {
 .counter-button.decrement:hover {
   background: #97d2f0;
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(168, 230, 207, 0.25);
+  box-shadow: 0 8px 25px var(--shadow-color);
 }
 
 .counter-button.decrement:active {
   transform: translateY(0);
-  box-shadow: 0 4px 15px rgba(168, 230, 207, 0.15);
+  box-shadow: 0 4px 15px var(--shadow-color);
 }
 
 /* Beautiful focus styles for accessibility */
@@ -257,6 +282,14 @@ body {
   line-height: 1.6;
   font-family: 'Georgia', serif;
   font-style: italic;
+}
+
+/* Theme toggle container */
+.theme-toggle-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  transition: var(--theme-transition);
 }
 
 .instructions p {
