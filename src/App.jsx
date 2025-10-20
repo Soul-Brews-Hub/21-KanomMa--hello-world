@@ -8,6 +8,7 @@ function App() {
   const [emojisEnabled, setEmojisEnabled] = useState(true)
   const [activeEmojis, setActiveEmojis] = useState([])
   const emojiContainerRef = useRef(null)
+  const [scrollY, setScrollY] = useState(0)
 
   // Emoji sets
   const emojiSets = {
@@ -19,6 +20,18 @@ function App() {
 
   // Animation types
   const animationTypes = ['float', 'bounce', 'rotate', 'pulse', 'spiral']
+
+  // Parallax scroll effect
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY)
+      // Update CSS custom property for parallax effects
+      document.documentElement.style.setProperty('--scroll-y', `${window.scrollY}px`)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   const animateCounter = useCallback((callback) => {
     setIsAnimating(true)
@@ -187,18 +200,23 @@ function App() {
   return (
     <div className="app">
       <div className="background-animation">
-        <div className="gradient-flow" style={{
-          animationDuration: `${8 / pulseIntensity}s`,
-          opacity: 0.7 * pulseIntensity
-        }}></div>
-        <div className="floating-shapes">
-          <div className="shape shape-1"></div>
-          <div className="shape shape-2"></div>
-          <div className="shape shape-3"></div>
-          <div className="shape shape-4"></div>
-          <div className="shape shape-5"></div>
-          <div className="shape shape-6"></div>
+        {/* Parallax Layers */}
+        <div className="parallax-layer-1"></div>
+        <div className="parallax-layer-2"></div>
+        <div className="parallax-layer-3"></div>
+        <div className="parallax-layer-4"></div>
+
+        {/* Geometric Patterns */}
+        <div className="geometric-pattern">
+          <div className="geometric-shape geometric-shape-1"></div>
+          <div className="geometric-shape geometric-shape-2"></div>
+          <div className="geometric-shape geometric-shape-3"></div>
+          <div className="geometric-shape geometric-shape-4"></div>
         </div>
+
+        {/* Architectural Grid Overlay */}
+        <div className="architectural-overlay"></div>
+
         <div className={`particle-field ${isAnimating ? 'pulse' : ''}`}></div>
         <div className="emoji-background" aria-hidden="true">
           <div className="emoji-container" ref={emojiContainerRef}>
@@ -220,7 +238,7 @@ function App() {
         </div>
       </div>
       <div className="counter-container">
-        <h1 className="title">Counter App</h1>
+        <h1 className="title">Counter</h1>
         <div className="counter-display">
           <span className={`counter-value ${isAnimating ? 'animate' : ''}`}>{count}</span>
         </div>
