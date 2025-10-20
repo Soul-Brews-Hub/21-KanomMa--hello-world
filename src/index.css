@@ -1,21 +1,28 @@
-/* Bold, modern color palette from colorhunt.co */
+/* Elegant, sophisticated color palette */
 :root {
-  /* Color palette: #08D9D6, #252A34, #FF2E63, #EAEAEA */
-  --primary-cyan: #08D9D6; /* Bright cyan/aqua blue */
-  --primary-dark: #252A34; /* Dark slate blue */
-  --accent-pink: #FF2E63; /* Vibrant pink/coral red */
-  --bg-light: #EAEAEA; /* Light neutral grey */
+  /* Warm sophisticated neutrals */
+  --bg-warm: #F5F2ED; /* Warm off-white - soft, inviting background */
+  --bg-cream: #FAF8F3; /* Cream white - elegant card backgrounds */
+  --border-soft: #E8E2D6; /* Soft lavender-grey - subtle borders */
 
-  /* Text and UI colors */
-  --text-primary: #252A34; /* Dark slate blue for text */
-  --text-secondary: rgba(37, 42, 52, 0.7); /* Dark blue with opacity */
-  --bg-primary: #EAEAEA; /* Light grey background */
-  --bg-secondary: #ffffff; /* White for cards */
-  --border-color: rgba(37, 42, 52, 0.2); /* Subtle border */
+  /* Refined text colors */
+  --text-primary: #3A3A3A; /* Soft charcoal - elegant text */
+  --text-secondary: #6B5B95; /* Dusty purple - subtle secondary text */
+  --text-luxury: #2C2C2C; /* Deep charcoal - luxury emphasis */
+
+  /* Sophisticated accent colors */
+  --primary-taupe: #8B7355; /* Muted taupe - primary buttons */
+  --accent-warm: #A0826D; /* Terracotta rose - warm accents */
+  --accent-dusty: #6B5B95; /* Dusty purple - secondary accents */
+
+  /* UI colors */
+  --bg-primary: #F5F2ED; /* Warm off-white background */
+  --bg-secondary: #FAF8F3; /* Cream white for cards */
+  --border-color: #E8E2D6; /* Soft lavender-grey border */
 
   /* Design system */
-  --border-radius: 6px;
-  --transition-speed: 0.2s;
+  --border-radius: 8px; /* Slightly more rounded for elegance */
+  --transition-speed: 0.25s; /* Slower transitions for refinement */
   --max-width: 500px;
 
   /* Simplified emoji settings */
@@ -106,23 +113,24 @@ body {
   max-width: var(--max-width);
 }
 
-/* Clean, minimal card design */
+/* Elegant card design */
 .counter-container {
   background: var(--bg-secondary);
   border-radius: var(--border-radius);
   padding: 60px 40px;
   text-align: center;
-  box-shadow: 0 2px 20px rgba(37, 42, 52, 0.12);
+  box-shadow: 0 4px 30px rgba(58, 58, 58, 0.08);
   border: 1px solid var(--border-color);
 }
 
-/* Bold, modern typography */
+/* Elegant, refined typography */
 .title {
   font-size: 2.5rem;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--text-primary);
   margin-bottom: 40px;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
+  font-family: 'Georgia', serif;
 }
 
 .counter-display {
@@ -132,101 +140,106 @@ body {
 .counter-value {
   font-size: 4rem;
   font-weight: 300;
-  color: var(--accent-pink);
+  color: var(--text-luxury);
   display: inline-block;
   min-width: 120px;
   transition: transform var(--transition-speed) ease;
+  font-family: 'Georgia', serif;
 }
 
-/* Bold button design with colorhunt.co palette */
+/* Elegant button design with sophisticated palette */
 .button-group {
   display: flex;
-  gap: 16px;
+  gap: 20px;
   justify-content: center;
   margin: 40px 0;
   flex-wrap: wrap;
 }
 
 .counter-button {
-  padding: 16px 32px;
+  padding: 18px 36px;
   border: none;
   border-radius: var(--border-radius);
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-size: 1rem;
+  font-weight: 500;
   cursor: pointer;
   transition: all var(--transition-speed) ease;
   min-width: 100px;
-  height: 48px;
+  height: 52px;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   overflow: hidden;
+  font-family: 'Georgia', serif;
+  letter-spacing: 0.02em;
 }
 
-/* Primary increment button - bright cyan */
+/* Primary increment button - sophisticated taupe */
 .counter-button.increment {
-  background: var(--primary-cyan);
+  background: var(--primary-taupe);
   color: white;
 }
 
 .counter-button.increment:hover {
-  background: #07c4c1;
+  background: #7a6449;
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(8, 217, 214, 0.3);
+  box-shadow: 0 6px 20px rgba(139, 115, 85, 0.15);
 }
 
 .counter-button.increment:active {
   transform: translateY(0);
-  box-shadow: 0 2px 6px rgba(8, 217, 214, 0.2);
+  box-shadow: 0 3px 10px rgba(139, 115, 85, 0.1);
 }
 
-/* Reset button - vibrant pink */
+/* Reset button - warm terracotta rose */
 .counter-button.reset {
-  background: var(--accent-pink);
+  background: var(--accent-warm);
   color: white;
 }
 
 .counter-button.reset:hover {
-  background: #e62858;
+  background: #8f6a56;
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(255, 46, 99, 0.3);
+  box-shadow: 0 6px 20px rgba(160, 130, 109, 0.15);
 }
 
 .counter-button.reset:active {
   transform: translateY(0);
-  box-shadow: 0 2px 6px rgba(255, 46, 99, 0.2);
+  box-shadow: 0 3px 10px rgba(160, 130, 109, 0.1);
 }
 
-/* Decrement button - dark slate blue */
+/* Decrement button - dusty purple */
 .counter-button.decrement {
-  background: var(--primary-dark);
+  background: var(--accent-dusty);
   color: white;
 }
 
 .counter-button.decrement:hover {
-  background: #1f2330;
+  background: #5a4a7a;
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(37, 42, 52, 0.4);
+  box-shadow: 0 6px 20px rgba(107, 91, 149, 0.15);
 }
 
 .counter-button.decrement:active {
   transform: translateY(0);
-  box-shadow: 0 2px 6px rgba(37, 42, 52, 0.2);
+  box-shadow: 0 3px 10px rgba(107, 91, 149, 0.1);
 }
 
-/* Simple focus styles for accessibility */
+/* Elegant focus styles for accessibility */
 .counter-button:focus-visible {
-  outline: 2px solid var(--primary-cyan);
-  outline-offset: 2px;
+  outline: 2px solid var(--accent-warm);
+  outline-offset: 3px;
 }
 
-/* Clean instructions */
+/* Elegant instructions */
 .instructions {
   margin-top: 40px;
   color: var(--text-secondary);
   font-size: 0.9rem;
-  line-height: 1.5;
+  line-height: 1.6;
+  font-family: 'Georgia', serif;
+  font-style: italic;
 }
 
 .instructions p {
@@ -235,11 +248,12 @@ body {
 
 kbd {
   background: var(--bg-secondary);
-  padding: 2px 6px;
-  border-radius: 3px;
-  font-family: monospace;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-family: 'Georgia', serif;
   font-size: 0.85em;
   border: 1px solid var(--border-color);
+  font-style: normal;
 }
 
 /* Counter animation */
