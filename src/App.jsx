@@ -4,11 +4,9 @@ import './App.css'
 function App() {
   const [count, setCount] = useState(0)
   const [isAnimating, setIsAnimating] = useState(false)
-  const [pulseIntensity, setPulseIntensity] = useState(1)
   const [emojisEnabled, setEmojisEnabled] = useState(true)
   const [activeEmojis, setActiveEmojis] = useState([])
   const emojiContainerRef = useRef(null)
-  const [scrollY, setScrollY] = useState(0)
 
   // Emoji sets
   const emojiSets = {
@@ -18,28 +16,16 @@ function App() {
     minimal: ['⚡', '💫', '🔥', '✨', '🌟', '⚡', '💫', '🔥', '✨', '🌟']
   }
 
-  // Animation types
-  const animationTypes = ['float', 'bounce', 'rotate', 'pulse', 'spiral']
+  // Simplified animation types - only float for clean look
+  const animationTypes = ['float']
 
-  // Parallax scroll effect
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY)
-      // Update CSS custom property for parallax effects
-      document.documentElement.style.setProperty('--scroll-y', `${window.scrollY}px`)
-    }
-
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  // Removed parallax scroll effect for cleaner performance
 
   const animateCounter = useCallback((callback) => {
     setIsAnimating(true)
-    setPulseIntensity(1.3)
     callback()
     setTimeout(() => {
       setIsAnimating(false)
-      setPulseIntensity(1)
     }, 200)
   }, [])
 
@@ -137,15 +123,15 @@ function App() {
     }
   }, [increment, decrement, reset, toggleEmojis])
 
-  // Continuous emoji generation
+  // Simplified emoji generation - much less frequent
   useEffect(() => {
     if (!emojisEnabled) return
 
     const interval = setInterval(() => {
-      if (Math.random() < 0.3) { // 30% chance to spawn emoji each interval
+      if (Math.random() < 0.1) { // Reduced from 30% to 10% chance
         spawnEmoji()
       }
-    }, 2000)
+    }, 3000) // Increased from 2s to 3s interval
 
     return () => clearInterval(interval)
   }, [emojisEnabled, spawnEmoji])
@@ -173,51 +159,23 @@ function App() {
     spawnEmojiBurst(3)
   }, [count, emojisEnabled, spawnEmojiBurst])
 
-  // Update animateCounter to trigger emojis
-  const enhancedAnimateCounter = useCallback((callback) => {
-    setIsAnimating(true)
-    setPulseIntensity(1.3)
-    callback()
-    setTimeout(() => {
-      setIsAnimating(false)
-      setPulseIntensity(1)
-    }, 200)
-  }, [])
-
-  // Update counter functions to use enhanced version
+  // Simplified counter functions
   const enhancedIncrement = useCallback(() => {
-    enhancedAnimateCounter(() => setCount(prev => prev + 1))
-  }, [enhancedAnimateCounter])
+    animateCounter(() => setCount(prev => prev + 1))
+  }, [animateCounter])
 
   const enhancedDecrement = useCallback(() => {
-    enhancedAnimateCounter(() => setCount(prev => Math.max(0, prev - 1)))
-  }, [enhancedAnimateCounter])
+    animateCounter(() => setCount(prev => Math.max(0, prev - 1)))
+  }, [animateCounter])
 
   const enhancedReset = useCallback(() => {
-    enhancedAnimateCounter(() => setCount(0))
-  }, [enhancedAnimateCounter])
+    animateCounter(() => setCount(0))
+  }, [animateCounter])
 
   return (
     <div className="app">
       <div className="background-animation">
-        {/* Parallax Layers */}
-        <div className="parallax-layer-1"></div>
-        <div className="parallax-layer-2"></div>
-        <div className="parallax-layer-3"></div>
-        <div className="parallax-layer-4"></div>
-
-        {/* Geometric Patterns */}
-        <div className="geometric-pattern">
-          <div className="geometric-shape geometric-shape-1"></div>
-          <div className="geometric-shape geometric-shape-2"></div>
-          <div className="geometric-shape geometric-shape-3"></div>
-          <div className="geometric-shape geometric-shape-4"></div>
-        </div>
-
-        {/* Architectural Grid Overlay */}
-        <div className="architectural-overlay"></div>
-
-        <div className={`particle-field ${isAnimating ? 'pulse' : ''}`}></div>
+        {/* Simple, clean background with subtle emoji overlay */}
         <div className="emoji-background" aria-hidden="true">
           <div className="emoji-container" ref={emojiContainerRef}>
             {activeEmojis.map(emoji => (
