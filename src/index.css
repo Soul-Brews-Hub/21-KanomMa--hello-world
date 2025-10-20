@@ -1,14 +1,19 @@
-/* Clean, minimal design inspired by swabtheworld.com */
+/* Bold, modern color palette from colorhunt.co */
 :root {
-  /* Color scheme inspired by swabtheworld.com */
-  --primary-color: #e6b3b3; /* Light pink/red accent from swabtheworld.com */
-  --text-primary: #000000; /* Black text for contrast like swabtheworld.com */
-  --text-secondary: #666666;
-  --bg-primary: #ffffff;
-  --bg-secondary: #fafafa;
-  --border-color: #e0e0e0;
+  /* Color palette: #08D9D6, #252A34, #FF2E63, #EAEAEA */
+  --primary-cyan: #08D9D6; /* Bright cyan/aqua blue */
+  --primary-dark: #252A34; /* Dark slate blue */
+  --accent-pink: #FF2E63; /* Vibrant pink/coral red */
+  --bg-light: #EAEAEA; /* Light neutral grey */
 
-  /* Clean design system */
+  /* Text and UI colors */
+  --text-primary: #252A34; /* Dark slate blue for text */
+  --text-secondary: rgba(37, 42, 52, 0.7); /* Dark blue with opacity */
+  --bg-primary: #EAEAEA; /* Light grey background */
+  --bg-secondary: #ffffff; /* White for cards */
+  --border-color: rgba(37, 42, 52, 0.2); /* Subtle border */
+
+  /* Design system */
   --border-radius: 6px;
   --transition-speed: 0.2s;
   --max-width: 500px;
@@ -103,15 +108,15 @@ body {
 
 /* Clean, minimal card design */
 .counter-container {
-  background: var(--bg-primary);
+  background: var(--bg-secondary);
   border-radius: var(--border-radius);
   padding: 60px 40px;
   text-align: center;
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 20px rgba(37, 42, 52, 0.12);
   border: 1px solid var(--border-color);
 }
 
-/* Clean, modern typography */
+/* Bold, modern typography */
 .title {
   font-size: 2.5rem;
   font-weight: 700;
@@ -127,13 +132,13 @@ body {
 .counter-value {
   font-size: 4rem;
   font-weight: 300;
-  color: var(--text-primary);
+  color: var(--accent-pink);
   display: inline-block;
   min-width: 120px;
   transition: transform var(--transition-speed) ease;
 }
 
-/* Clean button design inspired by swabtheworld.com */
+/* Bold button design with colorhunt.co palette */
 .button-group {
   display: flex;
   gap: 16px;
@@ -147,7 +152,7 @@ body {
   border: none;
   border-radius: var(--border-radius);
   font-size: 1.1rem;
-  font-weight: 500;
+  font-weight: 600;
   cursor: pointer;
   transition: all var(--transition-speed) ease;
   min-width: 100px;
@@ -155,49 +160,64 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--primary-color);
-  color: var(--text-primary);
   position: relative;
   overflow: hidden;
 }
 
-/* Simple, clean hover effect */
-.counter-button:hover {
-  background: #d4a3a3;
+/* Primary increment button - bright cyan */
+.counter-button.increment {
+  background: var(--primary-cyan);
+  color: white;
+}
+
+.counter-button.increment:hover {
+  background: #07c4c1;
   transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(230, 179, 179, 0.3);
+  box-shadow: 0 4px 12px rgba(8, 217, 214, 0.3);
 }
 
-.counter-button:active {
+.counter-button.increment:active {
   transform: translateY(0);
-  box-shadow: 0 2px 6px rgba(230, 179, 179, 0.2);
+  box-shadow: 0 2px 6px rgba(8, 217, 214, 0.2);
 }
 
-/* Special styling for decrement button */
-.counter-button.decrement {
-  background: #f0f0f0;
-  color: var(--text-primary);
-}
-
-.counter-button.decrement:hover {
-  background: #e0e0e0;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-/* Reset button with neutral styling */
+/* Reset button - vibrant pink */
 .counter-button.reset {
-  background: #f8f8f8;
-  color: var(--text-secondary);
+  background: var(--accent-pink);
+  color: white;
 }
 
 .counter-button.reset:hover {
-  background: #e8e8e8;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  background: #e62858;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(255, 46, 99, 0.3);
+}
+
+.counter-button.reset:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(255, 46, 99, 0.2);
+}
+
+/* Decrement button - dark slate blue */
+.counter-button.decrement {
+  background: var(--primary-dark);
+  color: white;
+}
+
+.counter-button.decrement:hover {
+  background: #1f2330;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(37, 42, 52, 0.4);
+}
+
+.counter-button.decrement:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(37, 42, 52, 0.2);
 }
 
 /* Simple focus styles for accessibility */
 .counter-button:focus-visible {
-  outline: 2px solid var(--primary-color);
+  outline: 2px solid var(--primary-cyan);
   outline-offset: 2px;
 }
 
