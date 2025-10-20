@@ -1,28 +1,31 @@
-/* Elegant, sophisticated color palette */
+/* Stunning, beautiful color palette */
 :root {
-  /* Warm sophisticated neutrals */
-  --bg-warm: #F5F2ED; /* Warm off-white - soft, inviting background */
-  --bg-cream: #FAF8F3; /* Cream white - elegant card backgrounds */
-  --border-soft: #E8E2D6; /* Soft lavender-grey - subtle borders */
+  /* Dramatic foundation colors */
+  --bg-dark: #0F0F0F; /* Deep charcoal black - dramatic, sophisticated background */
+  --bg-bright: #1A1A1A; /* Rich dark gray - alternative background option */
+  --bg-card: #FFFFFF; /* Pure white - crisp, clean card backgrounds */
+  --border-bright: #E8E8E8; /* Light gray - subtle, clean borders */
 
-  /* Refined text colors */
-  --text-primary: #3A3A3A; /* Soft charcoal - elegant text */
-  --text-secondary: #6B5B95; /* Dusty purple - subtle secondary text */
-  --text-luxury: #2C2C2C; /* Deep charcoal - luxury emphasis */
+  /* Stunning vibrant colors */
+  --primary-mint: #4ECDC4; /* Bright mint green - fresh, modern, beautiful */
+  --accent-coral: #FF6B6B; /* Vibrant coral pink - energetic, happy, stunning */
+  --accent-sky: #A8E6CF; /* Sky blue - calm, professional, beautiful */
+  --accent-sunny: #FFE66D; /* Sunny yellow - optimistic, cheerful */
 
-  /* Sophisticated accent colors */
-  --primary-taupe: #8B7355; /* Muted taupe - primary buttons */
-  --accent-warm: #A0826D; /* Terracotta rose - warm accents */
-  --accent-dusty: #6B5B95; /* Dusty purple - secondary accents */
+  /* Perfect text colors */
+  --text-on-dark: #FFFFFF; /* Pure white - perfect on dark backgrounds */
+  --text-on-light: #2D2D2D; /* Deep charcoal - perfect on white backgrounds */
+  --text-accent: #FF6B6B; /* Coral pink accents - vibrant emphasis */
+  --text-subtle: #666666; /* Medium gray - subtle secondary text */
 
   /* UI colors */
-  --bg-primary: #F5F2ED; /* Warm off-white background */
-  --bg-secondary: #FAF8F3; /* Cream white for cards */
-  --border-color: #E8E2D6; /* Soft lavender-grey border */
+  --bg-primary: #0F0F0F; /* Deep charcoal background */
+  --bg-secondary: #FFFFFF; /* Pure white cards */
+  --border-color: #E8E8E8; /* Light gray borders */
 
   /* Design system */
-  --border-radius: 8px; /* Slightly more rounded for elegance */
-  --transition-speed: 0.25s; /* Slower transitions for refinement */
+  --border-radius: 12px; /* More rounded for modern, friendly look */
+  --transition-speed: 0.3s; /* Smooth transitions for polished feel */
   --max-width: 500px;
 
   /* Simplified emoji settings */
@@ -113,24 +116,37 @@ body {
   max-width: var(--max-width);
 }
 
-/* Elegant card design */
+/* Stunning card design */
 .counter-container {
-  background: var(--bg-secondary);
+  background: linear-gradient(135deg, var(--bg-secondary) 0%, #fafafa 100%);
   border-radius: var(--border-radius);
   padding: 60px 40px;
   text-align: center;
-  box-shadow: 0 4px 30px rgba(58, 58, 58, 0.08);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
   border: 1px solid var(--border-color);
+  position: relative;
+  overflow: hidden;
 }
 
-/* Elegant, refined typography */
+/* Subtle inner glow */
+.counter-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 107, 107, 0.3), transparent);
+}
+
+/* Stunning, modern typography */
 .title {
   font-size: 2.5rem;
-  font-weight: 600;
-  color: var(--text-primary);
+  font-weight: 700;
+  color: var(--text-on-light);
   margin-bottom: 40px;
-  letter-spacing: -0.01em;
-  font-family: 'Georgia', serif;
+  letter-spacing: -0.02em;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
 }
 
 .counter-display {
@@ -138,104 +154,105 @@ body {
 }
 
 .counter-value {
-  font-size: 4rem;
-  font-weight: 300;
-  color: var(--text-luxury);
+  font-size: 4.5rem;
+  font-weight: 700;
+  color: var(--accent-coral);
   display: inline-block;
   min-width: 120px;
   transition: transform var(--transition-speed) ease;
-  font-family: 'Georgia', serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  letter-spacing: -0.03em;
 }
 
-/* Elegant button design with sophisticated palette */
+/* Stunning button design with beautiful colors */
 .button-group {
   display: flex;
-  gap: 20px;
+  gap: 16px;
   justify-content: center;
   margin: 40px 0;
   flex-wrap: wrap;
 }
 
 .counter-button {
-  padding: 18px 36px;
+  padding: 20px 40px;
   border: none;
   border-radius: var(--border-radius);
-  font-size: 1rem;
-  font-weight: 500;
+  font-size: 1.1rem;
+  font-weight: 600;
   cursor: pointer;
   transition: all var(--transition-speed) ease;
-  min-width: 100px;
-  height: 52px;
+  min-width: 110px;
+  height: 56px;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   overflow: hidden;
-  font-family: 'Georgia', serif;
-  letter-spacing: 0.02em;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  letter-spacing: 0.01em;
 }
 
-/* Primary increment button - sophisticated taupe */
+/* Primary increment button - beautiful mint green */
 .counter-button.increment {
-  background: var(--primary-taupe);
-  color: white;
+  background: var(--primary-mint);
+  color: var(--text-on-light);
 }
 
 .counter-button.increment:hover {
-  background: #7a6449;
-  transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(139, 115, 85, 0.15);
+  background: #3db8a3;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(78, 205, 196, 0.25);
 }
 
 .counter-button.increment:active {
   transform: translateY(0);
-  box-shadow: 0 3px 10px rgba(139, 115, 85, 0.1);
+  box-shadow: 0 4px 15px rgba(78, 205, 196, 0.15);
 }
 
-/* Reset button - warm terracotta rose */
+/* Reset button - vibrant coral pink */
 .counter-button.reset {
-  background: var(--accent-warm);
-  color: white;
+  background: var(--accent-coral);
+  color: var(--text-on-light);
 }
 
 .counter-button.reset:hover {
-  background: #8f6a56;
-  transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(160, 130, 109, 0.15);
+  background: #e55a5a;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 107, 107, 0.25);
 }
 
 .counter-button.reset:active {
   transform: translateY(0);
-  box-shadow: 0 3px 10px rgba(160, 130, 109, 0.1);
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.15);
 }
 
-/* Decrement button - dusty purple */
+/* Decrement button - beautiful sky blue */
 .counter-button.decrement {
-  background: var(--accent-dusty);
-  color: white;
+  background: var(--accent-sky);
+  color: var(--text-on-light);
 }
 
 .counter-button.decrement:hover {
-  background: #5a4a7a;
-  transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(107, 91, 149, 0.15);
+  background: #97d2f0;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(168, 230, 207, 0.25);
 }
 
 .counter-button.decrement:active {
   transform: translateY(0);
-  box-shadow: 0 3px 10px rgba(107, 91, 149, 0.1);
+  box-shadow: 0 4px 15px rgba(168, 230, 207, 0.15);
 }
 
-/* Elegant focus styles for accessibility */
+/* Beautiful focus styles for accessibility */
 .counter-button:focus-visible {
-  outline: 2px solid var(--accent-warm);
+  outline: 2px solid var(--accent-sunny);
   outline-offset: 3px;
 }
 
-/* Elegant instructions */
+/* Stunning instructions */
 .instructions {
   margin-top: 40px;
-  color: var(--text-secondary);
+  color: var(--text-subtle);
   font-size: 0.9rem;
   line-height: 1.6;
   font-family: 'Georgia', serif;
@@ -256,11 +273,20 @@ kbd {
   font-style: normal;
 }
 
-/* Counter animation */
+/* Stunning counter animation */
 @keyframes countChange {
-  0% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1) rotateX(0deg);
+    filter: brightness(1);
+  }
+  50% {
+    transform: scale(1.08) rotateX(5deg);
+    filter: brightness(1.2);
+  }
+  100% {
+    transform: scale(1) rotateX(0deg);
+    filter: brightness(1);
+  }
 }
 
 .counter-value.animate {
